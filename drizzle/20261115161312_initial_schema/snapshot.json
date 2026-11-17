@@ -1,0 +1,2251 @@
+{
+  "type": "base",
+  "version": "9",
+  "dialect": "postgres",
+  "id": "e1a124df-01ee-468f-b4d7-56ef6bc02828",
+  "prevIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "footprints": [
+    {
+      "statementType": "create_enum",
+      "statementTarget": [
+        "enum",
+        "public",
+        "user_status"
+      ],
+      "writes": [
+        "s|enum|public.user_status",
+        "n|enum|public.user_status",
+        "e|enum|public.user_status",
+        "n|type|public.user_status"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_enum",
+      "statementTarget": [
+        "enum",
+        "public",
+        "event_status"
+      ],
+      "writes": [
+        "s|enum|public.event_status",
+        "n|enum|public.event_status",
+        "e|enum|public.event_status",
+        "n|type|public.event_status"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_enum",
+      "statementTarget": [
+        "enum",
+        "public",
+        "ticket_type_status"
+      ],
+      "writes": [
+        "s|enum|public.ticket_type_status",
+        "n|enum|public.ticket_type_status",
+        "e|enum|public.ticket_type_status",
+        "n|type|public.ticket_type_status"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_enum",
+      "statementTarget": [
+        "enum",
+        "public",
+        "order_status"
+      ],
+      "writes": [
+        "s|enum|public.order_status",
+        "n|enum|public.order_status",
+        "e|enum|public.order_status",
+        "n|type|public.order_status"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_enum",
+      "statementTarget": [
+        "enum",
+        "public",
+        "ticket_status"
+      ],
+      "writes": [
+        "s|enum|public.ticket_status",
+        "n|enum|public.ticket_status",
+        "e|enum|public.ticket_status",
+        "n|type|public.ticket_status"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "users"
+      ],
+      "writes": [
+        "s|tbl|public.users",
+        "n|tbl|public.users",
+        "e|tbl|public.users",
+        "n|rel|public.users",
+        "n|type|public.users",
+        "n|rel|public.users_pkey",
+        "n|rel|public.users_email_key"
+      ],
+      "reads": [
+        "n|sch|public",
+        "n|enum|public.user_status"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "roles"
+      ],
+      "writes": [
+        "s|tbl|public.roles",
+        "n|tbl|public.roles",
+        "e|tbl|public.roles",
+        "n|rel|public.roles",
+        "n|type|public.roles",
+        "n|rel|public.roles_pkey",
+        "n|rel|public.roles_title_key"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "users_roles"
+      ],
+      "writes": [
+        "s|tbl|public.users_roles",
+        "n|tbl|public.users_roles",
+        "e|tbl|public.users_roles",
+        "n|rel|public.users_roles",
+        "n|type|public.users_roles",
+        "n|rel|public.users_roles_pkey"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "permissions"
+      ],
+      "writes": [
+        "s|tbl|public.permissions",
+        "n|tbl|public.permissions",
+        "e|tbl|public.permissions",
+        "n|rel|public.permissions",
+        "n|type|public.permissions",
+        "n|rel|public.permissions_pkey",
+        "n|rel|public.permissions_action_key"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "roles_permissions"
+      ],
+      "writes": [
+        "s|tbl|public.roles_permissions",
+        "n|tbl|public.roles_permissions",
+        "e|tbl|public.roles_permissions",
+        "n|rel|public.roles_permissions",
+        "n|type|public.roles_permissions",
+        "n|rel|public.roles_permissions_pkey"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "events"
+      ],
+      "writes": [
+        "s|tbl|public.events",
+        "n|tbl|public.events",
+        "e|tbl|public.events",
+        "n|rel|public.events",
+        "n|type|public.events",
+        "n|rel|public.events_pkey"
+      ],
+      "reads": [
+        "n|sch|public",
+        "n|enum|public.event_status"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "ticket_types"
+      ],
+      "writes": [
+        "s|tbl|public.ticket_types",
+        "n|tbl|public.ticket_types",
+        "e|tbl|public.ticket_types",
+        "n|rel|public.ticket_types",
+        "n|type|public.ticket_types",
+        "n|rel|public.ticket_types_pkey"
+      ],
+      "reads": [
+        "n|sch|public",
+        "n|enum|public.ticket_type_status"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "order_items"
+      ],
+      "writes": [
+        "s|tbl|public.order_items",
+        "n|tbl|public.order_items",
+        "e|tbl|public.order_items",
+        "n|rel|public.order_items",
+        "n|type|public.order_items",
+        "n|rel|public.order_items_pkey"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "orders"
+      ],
+      "writes": [
+        "s|tbl|public.orders",
+        "n|tbl|public.orders",
+        "e|tbl|public.orders",
+        "n|rel|public.orders",
+        "n|type|public.orders",
+        "n|rel|public.orders_pkey",
+        "n|rel|public.orders_access_token_hash_key"
+      ],
+      "reads": [
+        "n|sch|public",
+        "n|enum|public.order_status"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "tickets"
+      ],
+      "writes": [
+        "s|tbl|public.tickets",
+        "n|tbl|public.tickets",
+        "e|tbl|public.tickets",
+        "n|rel|public.tickets",
+        "n|type|public.tickets",
+        "n|rel|public.tickets_pkey",
+        "n|rel|public.tickets_code_key"
+      ],
+      "reads": [
+        "n|sch|public",
+        "n|enum|public.ticket_status"
+      ]
+    },
+    {
+      "statementType": "create_index",
+      "statementTarget": [
+        "index",
+        "public",
+        "ticket_types",
+        "idx_ticket_types_event_id"
+      ],
+      "writes": [
+        "s|idx|public.idx_ticket_types_event_id",
+        "n|idx|public.idx_ticket_types_event_id",
+        "e|idx|public.idx_ticket_types_event_id",
+        "n|rel|public.idx_ticket_types_event_id"
+      ],
+      "reads": [
+        "n|tbl|public.ticket_types",
+        "n|sch|public",
+        "n|col|public.ticket_types.event_id"
+      ]
+    },
+    {
+      "statementType": "create_index",
+      "statementTarget": [
+        "index",
+        "public",
+        "order_items",
+        "uq_order_items_order_id_ticket_type_id"
+      ],
+      "writes": [
+        "s|idx|public.uq_order_items_order_id_ticket_type_id",
+        "n|idx|public.uq_order_items_order_id_ticket_type_id",
+        "e|idx|public.uq_order_items_order_id_ticket_type_id",
+        "n|rel|public.uq_order_items_order_id_ticket_type_id"
+      ],
+      "reads": [
+        "n|tbl|public.order_items",
+        "n|sch|public",
+        "n|col|public.order_items.order_id",
+        "n|col|public.order_items.ticket_type_id"
+      ]
+    },
+    {
+      "statementType": "create_index",
+      "statementTarget": [
+        "index",
+        "public",
+        "orders",
+        "idx_orders_event_id"
+      ],
+      "writes": [
+        "s|idx|public.idx_orders_event_id",
+        "n|idx|public.idx_orders_event_id",
+        "e|idx|public.idx_orders_event_id",
+        "n|rel|public.idx_orders_event_id"
+      ],
+      "reads": [
+        "n|tbl|public.orders",
+        "n|sch|public",
+        "n|col|public.orders.event_id"
+      ]
+    },
+    {
+      "statementType": "create_index",
+      "statementTarget": [
+        "index",
+        "public",
+        "tickets",
+        "idx_tickets_order_id"
+      ],
+      "writes": [
+        "s|idx|public.idx_tickets_order_id",
+        "n|idx|public.idx_tickets_order_id",
+        "e|idx|public.idx_tickets_order_id",
+        "n|rel|public.idx_tickets_order_id"
+      ],
+      "reads": [
+        "n|tbl|public.tickets",
+        "n|sch|public",
+        "n|col|public.tickets.order_id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "users_roles"
+      ],
+      "writes": [
+        "s|fk|public.users_roles.users_roles_user_id_users_id_fkey",
+        "n|fk|public.users_roles.users_roles_user_id_users_id_fkey",
+        "e|fk|public.users_roles.users_roles_user_id_users_id_fkey",
+        "n|con|public.users_roles.users_roles_user_id_users_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.users_roles",
+        "n|sch|public",
+        "n|tbl|public.users",
+        "n|sch|public",
+        "n|col|public.users_roles.user_id",
+        "n|col|public.users.id",
+        "e|uniqueness|public.users.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "users_roles"
+      ],
+      "writes": [
+        "s|fk|public.users_roles.users_roles_role_id_roles_id_fkey",
+        "n|fk|public.users_roles.users_roles_role_id_roles_id_fkey",
+        "e|fk|public.users_roles.users_roles_role_id_roles_id_fkey",
+        "n|con|public.users_roles.users_roles_role_id_roles_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.users_roles",
+        "n|sch|public",
+        "n|tbl|public.roles",
+        "n|sch|public",
+        "n|col|public.users_roles.role_id",
+        "n|col|public.roles.id",
+        "e|uniqueness|public.roles.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "roles_permissions"
+      ],
+      "writes": [
+        "s|fk|public.roles_permissions.roles_permissions_role_id_roles_id_fkey",
+        "n|fk|public.roles_permissions.roles_permissions_role_id_roles_id_fkey",
+        "e|fk|public.roles_permissions.roles_permissions_role_id_roles_id_fkey",
+        "n|con|public.roles_permissions.roles_permissions_role_id_roles_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.roles_permissions",
+        "n|sch|public",
+        "n|tbl|public.roles",
+        "n|sch|public",
+        "n|col|public.roles_permissions.role_id",
+        "n|col|public.roles.id",
+        "e|uniqueness|public.roles.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "roles_permissions"
+      ],
+      "writes": [
+        "s|fk|public.roles_permissions.roles_permissions_permission_id_permissions_id_fkey",
+        "n|fk|public.roles_permissions.roles_permissions_permission_id_permissions_id_fkey",
+        "e|fk|public.roles_permissions.roles_permissions_permission_id_permissions_id_fkey",
+        "n|con|public.roles_permissions.roles_permissions_permission_id_permissions_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.roles_permissions",
+        "n|sch|public",
+        "n|tbl|public.permissions",
+        "n|sch|public",
+        "n|col|public.roles_permissions.permission_id",
+        "n|col|public.permissions.id",
+        "e|uniqueness|public.permissions.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "events"
+      ],
+      "writes": [
+        "s|fk|public.events.events_created_by_users_id_fkey",
+        "n|fk|public.events.events_created_by_users_id_fkey",
+        "e|fk|public.events.events_created_by_users_id_fkey",
+        "n|con|public.events.events_created_by_users_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.events",
+        "n|sch|public",
+        "n|tbl|public.users",
+        "n|sch|public",
+        "n|col|public.events.created_by",
+        "n|col|public.users.id",
+        "e|uniqueness|public.users.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "ticket_types"
+      ],
+      "writes": [
+        "s|fk|public.ticket_types.ticket_types_event_id_events_id_fkey",
+        "n|fk|public.ticket_types.ticket_types_event_id_events_id_fkey",
+        "e|fk|public.ticket_types.ticket_types_event_id_events_id_fkey",
+        "n|con|public.ticket_types.ticket_types_event_id_events_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.ticket_types",
+        "n|sch|public",
+        "n|tbl|public.events",
+        "n|sch|public",
+        "n|col|public.ticket_types.event_id",
+        "n|col|public.events.id",
+        "e|uniqueness|public.events.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "order_items"
+      ],
+      "writes": [
+        "s|fk|public.order_items.order_items_order_id_orders_id_fkey",
+        "n|fk|public.order_items.order_items_order_id_orders_id_fkey",
+        "e|fk|public.order_items.order_items_order_id_orders_id_fkey",
+        "n|con|public.order_items.order_items_order_id_orders_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.order_items",
+        "n|sch|public",
+        "n|tbl|public.orders",
+        "n|sch|public",
+        "n|col|public.order_items.order_id",
+        "n|col|public.orders.id",
+        "e|uniqueness|public.orders.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "order_items"
+      ],
+      "writes": [
+        "s|fk|public.order_items.order_items_ticket_type_id_ticket_types_id_fkey",
+        "n|fk|public.order_items.order_items_ticket_type_id_ticket_types_id_fkey",
+        "e|fk|public.order_items.order_items_ticket_type_id_ticket_types_id_fkey",
+        "n|con|public.order_items.order_items_ticket_type_id_ticket_types_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.order_items",
+        "n|sch|public",
+        "n|tbl|public.ticket_types",
+        "n|sch|public",
+        "n|col|public.order_items.ticket_type_id",
+        "n|col|public.ticket_types.id",
+        "e|uniqueness|public.ticket_types.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "orders"
+      ],
+      "writes": [
+        "s|fk|public.orders.orders_event_id_events_id_fkey",
+        "n|fk|public.orders.orders_event_id_events_id_fkey",
+        "e|fk|public.orders.orders_event_id_events_id_fkey",
+        "n|con|public.orders.orders_event_id_events_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.orders",
+        "n|sch|public",
+        "n|tbl|public.events",
+        "n|sch|public",
+        "n|col|public.orders.event_id",
+        "n|col|public.events.id",
+        "e|uniqueness|public.events.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "orders"
+      ],
+      "writes": [
+        "s|fk|public.orders.orders_user_id_users_id_fkey",
+        "n|fk|public.orders.orders_user_id_users_id_fkey",
+        "e|fk|public.orders.orders_user_id_users_id_fkey",
+        "n|con|public.orders.orders_user_id_users_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.orders",
+        "n|sch|public",
+        "n|tbl|public.users",
+        "n|sch|public",
+        "n|col|public.orders.user_id",
+        "n|col|public.users.id",
+        "e|uniqueness|public.users.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "tickets"
+      ],
+      "writes": [
+        "s|fk|public.tickets.tickets_order_id_orders_id_fkey",
+        "n|fk|public.tickets.tickets_order_id_orders_id_fkey",
+        "e|fk|public.tickets.tickets_order_id_orders_id_fkey",
+        "n|con|public.tickets.tickets_order_id_orders_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.tickets",
+        "n|sch|public",
+        "n|tbl|public.orders",
+        "n|sch|public",
+        "n|col|public.tickets.order_id",
+        "n|col|public.orders.id",
+        "e|uniqueness|public.orders.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "tickets"
+      ],
+      "writes": [
+        "s|fk|public.tickets.tickets_ticket_type_id_ticket_types_id_fkey",
+        "n|fk|public.tickets.tickets_ticket_type_id_ticket_types_id_fkey",
+        "e|fk|public.tickets.tickets_ticket_type_id_ticket_types_id_fkey",
+        "n|con|public.tickets.tickets_ticket_type_id_ticket_types_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.tickets",
+        "n|sch|public",
+        "n|tbl|public.ticket_types",
+        "n|sch|public",
+        "n|col|public.tickets.ticket_type_id",
+        "n|col|public.ticket_types.id",
+        "e|uniqueness|public.ticket_types.id"
+      ]
+    }
+  ],
+  "ddl": [
+    {
+      "schema": "public",
+      "name": "users",
+      "isRlsEnabled": false,
+      "entityType": "tables"
+    },
+    {
+      "schema": "public",
+      "name": "roles",
+      "isRlsEnabled": false,
+      "entityType": "tables"
+    },
+    {
+      "schema": "public",
+      "name": "users_roles",
+      "isRlsEnabled": false,
+      "entityType": "tables"
+    },
+    {
+      "schema": "public",
+      "name": "permissions",
+      "isRlsEnabled": false,
+      "entityType": "tables"
+    },
+    {
+      "schema": "public",
+      "name": "roles_permissions",
+      "isRlsEnabled": false,
+      "entityType": "tables"
+    },
+    {
+      "schema": "public",
+      "name": "events",
+      "isRlsEnabled": false,
+      "entityType": "tables"
+    },
+    {
+      "schema": "public",
+      "name": "ticket_types",
+      "isRlsEnabled": false,
+      "entityType": "tables"
+    },
+    {
+      "schema": "public",
+      "name": "order_items",
+      "isRlsEnabled": false,
+      "entityType": "tables"
+    },
+    {
+      "schema": "public",
+      "name": "orders",
+      "isRlsEnabled": false,
+      "entityType": "tables"
+    },
+    {
+      "schema": "public",
+      "name": "tickets",
+      "isRlsEnabled": false,
+      "entityType": "tables"
+    },
+    {
+      "schema": "public",
+      "name": "user_status",
+      "values": [
+        "active",
+        "deactivated",
+        "suspended"
+      ],
+      "entityType": "enums"
+    },
+    {
+      "schema": "public",
+      "name": "event_status",
+      "values": [
+        "draft",
+        "published",
+        "cancelled",
+        "ended"
+      ],
+      "entityType": "enums"
+    },
+    {
+      "schema": "public",
+      "name": "ticket_type_status",
+      "values": [
+        "hidden",
+        "visible"
+      ],
+      "entityType": "enums"
+    },
+    {
+      "schema": "public",
+      "name": "order_status",
+      "values": [
+        "pending_payment",
+        "paid",
+        "expired",
+        "refunded",
+        "cancelled"
+      ],
+      "entityType": "enums"
+    },
+    {
+      "schema": "public",
+      "name": "ticket_status",
+      "values": [
+        "valid",
+        "checked_in",
+        "cancelled"
+      ],
+      "entityType": "enums"
+    },
+    {
+      "schema": "public",
+      "table": "users",
+      "name": "id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "users",
+      "name": "name",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "users",
+      "name": "email",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "users",
+      "name": "password_hash",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "users",
+      "name": "status",
+      "type": "user_status",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'active'",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "users",
+      "name": "email_verified",
+      "type": "boolean",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "false",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "users",
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "users",
+      "name": "updated_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "roles",
+      "name": "id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "roles",
+      "name": "title",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "roles",
+      "name": "description",
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "roles",
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "roles",
+      "name": "updated_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "users_roles",
+      "name": "user_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "users_roles",
+      "name": "role_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "users_roles",
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "permissions",
+      "name": "id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "permissions",
+      "name": "action",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "permissions",
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "permissions",
+      "name": "updated_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "roles_permissions",
+      "name": "role_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "roles_permissions",
+      "name": "permission_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "roles_permissions",
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "name",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "images",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 1,
+      "default": "'{}'",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "venue",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "description",
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "city",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "timezone",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "created_by",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "status",
+      "type": "event_status",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'draft'",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "start_date",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "end_date",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "updated_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "title",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "price",
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "currency",
+      "type": "char(3)",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "capacity",
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "status",
+      "type": "ticket_type_status",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'visible'",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "event_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "sale_start",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "sale_end",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "per_order_limit",
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "6",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "updated_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "order_items",
+      "name": "id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "order_items",
+      "name": "order_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "order_items",
+      "name": "price",
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "order_items",
+      "name": "currency",
+      "type": "char(3)",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "order_items",
+      "name": "ticket_type_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "order_items",
+      "name": "quantity",
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "order_items",
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "order_items",
+      "name": "updated_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "status",
+      "type": "order_status",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'pending_payment'",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "event_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "expires_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "user_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "access_token_hash",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "buyer_name",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "buyer_email",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "updated_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "tickets",
+      "name": "id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "tickets",
+      "name": "code",
+      "type": "varchar",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "tickets",
+      "name": "order_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "tickets",
+      "name": "ticket_type_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "tickets",
+      "name": "status",
+      "type": "ticket_status",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'valid'",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "tickets",
+      "name": "checked_in_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "tickets",
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "tickets",
+      "name": "updated_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "idx_ticket_types_event_id",
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "event_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "entityType": "indexes"
+    },
+    {
+      "schema": "public",
+      "table": "order_items",
+      "name": "uq_order_items_order_id_ticket_type_id",
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "order_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "ticket_type_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": true,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "entityType": "indexes"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "idx_orders_event_id",
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "event_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "entityType": "indexes"
+    },
+    {
+      "schema": "public",
+      "table": "tickets",
+      "name": "idx_tickets_order_id",
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "order_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "entityType": "indexes"
+    },
+    {
+      "schema": "public",
+      "table": "users_roles",
+      "name": "users_roles_user_id_users_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "users_roles",
+      "name": "users_roles_role_id_roles_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "role_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "roles",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "roles_permissions",
+      "name": "roles_permissions_role_id_roles_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "role_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "roles",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "roles_permissions",
+      "name": "roles_permissions_permission_id_permissions_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "permission_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "permissions",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "events_created_by_users_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "created_by"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "ticket_types_event_id_events_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "event_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "events",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "order_items",
+      "name": "order_items_order_id_orders_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "order_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "orders",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "order_items",
+      "name": "order_items_ticket_type_id_ticket_types_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "ticket_type_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "ticket_types",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "orders_event_id_events_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "event_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "events",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "orders_user_id_users_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "tickets",
+      "name": "tickets_order_id_orders_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "order_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "orders",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "tickets",
+      "name": "tickets_ticket_type_id_ticket_types_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "ticket_type_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "ticket_types",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "users_roles",
+      "name": "users_roles_pkey",
+      "columns": [
+        "user_id",
+        "role_id"
+      ],
+      "nameExplicit": false,
+      "entityType": "pks"
+    },
+    {
+      "schema": "public",
+      "table": "roles_permissions",
+      "name": "roles_permissions_pkey",
+      "columns": [
+        "role_id",
+        "permission_id"
+      ],
+      "nameExplicit": false,
+      "entityType": "pks"
+    },
+    {
+      "schema": "public",
+      "table": "users",
+      "name": "users_pkey",
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "entityType": "pks"
+    },
+    {
+      "schema": "public",
+      "table": "roles",
+      "name": "roles_pkey",
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "entityType": "pks"
+    },
+    {
+      "schema": "public",
+      "table": "permissions",
+      "name": "permissions_pkey",
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "entityType": "pks"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "events_pkey",
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "entityType": "pks"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "ticket_types_pkey",
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "entityType": "pks"
+    },
+    {
+      "schema": "public",
+      "table": "order_items",
+      "name": "order_items_pkey",
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "entityType": "pks"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "orders_pkey",
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "entityType": "pks"
+    },
+    {
+      "schema": "public",
+      "table": "tickets",
+      "name": "tickets_pkey",
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "entityType": "pks"
+    },
+    {
+      "schema": "public",
+      "table": "users",
+      "name": "users_email_key",
+      "nameExplicit": false,
+      "columns": [
+        "email"
+      ],
+      "nullsNotDistinct": false,
+      "entityType": "uniques"
+    },
+    {
+      "schema": "public",
+      "table": "roles",
+      "name": "roles_title_key",
+      "nameExplicit": false,
+      "columns": [
+        "title"
+      ],
+      "nullsNotDistinct": false,
+      "entityType": "uniques"
+    },
+    {
+      "schema": "public",
+      "table": "permissions",
+      "name": "permissions_action_key",
+      "nameExplicit": false,
+      "columns": [
+        "action"
+      ],
+      "nullsNotDistinct": false,
+      "entityType": "uniques"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "orders_access_token_hash_key",
+      "nameExplicit": false,
+      "columns": [
+        "access_token_hash"
+      ],
+      "nullsNotDistinct": false,
+      "entityType": "uniques"
+    },
+    {
+      "schema": "public",
+      "table": "tickets",
+      "name": "tickets_code_key",
+      "nameExplicit": false,
+      "columns": [
+        "code"
+      ],
+      "nullsNotDistinct": false,
+      "entityType": "uniques"
+    },
+    {
+      "schema": "public",
+      "table": "users",
+      "name": "chk_users_email_lowercase",
+      "value": "\"email\" = lower(\"email\")",
+      "entityType": "checks"
+    },
+    {
+      "schema": "public",
+      "table": "events",
+      "name": "chk_events_end_after_start",
+      "value": "\"end_date\" > \"start_date\"",
+      "entityType": "checks"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "chk_ticket_types_price_not_negative",
+      "value": "\"price\" >= 0",
+      "entityType": "checks"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "chk_ticket_types_capacity_greater_than_zero",
+      "value": "\"capacity\" > 0",
+      "entityType": "checks"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "chk_ticket_types_per_order_limit_greater_than_zero",
+      "value": "\"per_order_limit\" > 0",
+      "entityType": "checks"
+    },
+    {
+      "schema": "public",
+      "table": "ticket_types",
+      "name": "chk_ticket_types_sale_end_after_start",
+      "value": "\"sale_end\" > \"sale_start\"",
+      "entityType": "checks"
+    },
+    {
+      "schema": "public",
+      "table": "order_items",
+      "name": "chk_order_items_quantity_greater_than_zero",
+      "value": "\"quantity\" > 0",
+      "entityType": "checks"
+    },
+    {
+      "schema": "public",
+      "table": "order_items",
+      "name": "chk_order_items_price_not_negative",
+      "value": "\"price\" >= 0",
+      "entityType": "checks"
+    },
+    {
+      "schema": "public",
+      "table": "orders",
+      "name": "chk_orders_buyer_email_lowercase",
+      "value": "\"buyer_email\" = lower(\"buyer_email\")",
+      "entityType": "checks"
+    },
+    {
+      "schema": "public",
+      "table": "tickets",
+      "name": "chk_tickets_checked_in_at_matches_status",
+      "value": "(\"status\" = 'checked_in') = (\"checked_in_at\" IS NOT NULL)",
+      "entityType": "checks"
+    }
+  ]
+}
