@@ -4,6 +4,7 @@ import { AuthModule } from './auth/auth.module.js';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EnvironmentVariablesSchema } from './env.schema.js';
 import { drizzle } from 'drizzle-orm/node-postgres';
+import { HealthModule } from './health/health.module.js';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { drizzle } from 'drizzle-orm/node-postgres';
       }),
     }),
     AuthModule,
+    HealthModule
   ],
 })
 export class AppModule { }

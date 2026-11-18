@@ -18,6 +18,8 @@ async function bootstrap() {
 
   SwaggerModule.setup('docs', app, documentFactory);
 
+  app.enableShutdownHooks()
+
   await app.setGlobalPrefix('api/v1').listen(process.env.PORT ?? 3000);
 }
 
