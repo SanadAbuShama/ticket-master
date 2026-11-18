@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EnvironmentVariablesSchema } from './env.schema.js';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { HealthModule } from './health/health.module.js';
+import { AuthenticationModule } from '@nestjs/authentication';
 
 @Module({
   imports: [
@@ -19,7 +20,12 @@ import { HealthModule } from './health/health.module.js';
         connection: config.getOrThrow('DATABASE_URL'),
       }),
     }),
-    AuthModule,
+    AuthenticationModule.forRoot({
+      session: {
+        absoluteTtl: '14d',
+        idleTtl: '3d',
+      },
+    }),
     HealthModule
   ],
 })
