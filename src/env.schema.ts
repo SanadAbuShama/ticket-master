@@ -6,7 +6,7 @@ export const EnvironmentVariablesSchema = z.object({
     POSTGRES_DB: z.string(),
     DATABASE_URL: z.url(),
     NODE_ENV: z.enum(['development', 'staging', 'production']),
-    PORT: z.number()
+    PORT: z.coerce.number()
 })
 
 export type EnvironmentVariables = z.infer<typeof EnvironmentVariablesSchema>;
