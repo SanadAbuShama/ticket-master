@@ -1,3 +1,4 @@
+name: ticket_master
 services:
   db:
     image: postgres:18
