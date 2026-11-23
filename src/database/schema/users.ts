@@ -8,7 +8,7 @@ export const userRole = pgEnum('user_role', ['attendee', 'admin', 'organizer']);
 export const users = snakeCase.table('users', {
 	id: uuid().primaryKey().defaultRandom(),
     name: varchar().notNull(),
-    email: varchar().unique().notNull(),
+    email: varchar().unique('users_email_key').notNull(),
     passwordHash: varchar().notNull(),
     status: userStatus().notNull().default('active'),
     emailVerified: boolean().notNull().default(false),

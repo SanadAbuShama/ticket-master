@@ -1,72 +1,93 @@
 
-import { randomUUID } from 'node:crypto';
 import { Injectable } from '@nestjs/common';
-import type { User } from './user.js';
+import type { InternalUser, UserRow } from './user.types.js';
 import { InjectDrizzle } from '@nestjs/drizzle';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { users } from '../database/schema/users.js';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
+import { normalizeEmail } from '../common/utils/normalize-email.js';
+import { AppError } from '../common/errors/app.error.js';
+import { ErrorCode } from '../common/errors/error.codes.js';
+import { isUniqueViolation } from '../common/database/postgres-errors.js';
 
-type UserRow = typeof users.$inferSelect;
-
-/**
- * In-memory stand-in for your data layer (Prisma, Drizzle, TypeORM, ...).
- * Only `User` objects leave this class: password hashes stay inside.
- */
 @Injectable()
 export class UsersRepository {
     constructor(@InjectDrizzle() private readonly db: NodePgDatabase) { }
 
     async create(
         email: string,
+        { passwordHash, emailVerified = false, name }: { name: string; passwordHash: string; emailVerified?: boolean },
+    ): Promise<InternalUser> {
+        try {
+            const [createdUserRow] = await this.db
+                .insert(users)
+                .values({ name, email: normalizeEmail(email), emailVerified, passwordHash })
+                .returning();
 
-        { passwordHash = null, emailVerified = false }: { passwordHash?: string | null; emailVerified?: boolean } = {},
-    ): Promise<User> {
-        const row: UserRow = { email: normalize(email), emailVerified, roles: ['attendee'], passwordHash };
+            if (!createdUserRow) {
+                throw new Error('Insert returned no row');
+            }
 
-        this.rows.set(row.id, row);
-
-        return toUser(row);
+            return toUser(createdUserRow);
+        } catch (error) {
+            if (isUniqueViolation(error, 'users_email_key')) {
+                throw new AppError(ErrorCode.EMAIL_TAKEN);
+            }
+            throw error;
+        }
     }
 
-    async findById(id: string): Promise<User | null> {
+    async findById(id: string): Promise<InternalUser | null> {
         const [userRow] = await this.db.select().from(users).where(eq(users.id, id));
 
         return userRow ? toUser(userRow) : null;
     }
 
-    async findByEmail(email: string): Promise<User | null> {
-        const normalizedEmail = normalize(email);
-
-        const [userRow] = await this.db.select().from(users).where(eq(users.email, normalizedEmail))
+    async findActiveById(id: string): Promise<InternalUser | null> {
+        const [userRow] = await this.db.select().from(users).where(and(eq(users.id, id), eq(users.status, 'active')));
 
         return userRow ? toUser(userRow) : null;
     }
 
-    /** For password sign-in only. */
-    async findCredentials(email: string): Promise<{ user: User; passwordHash: string | null } | null> {
-        const row = this.findRow(email);
-        return row ? { user: toUser(row), passwordHash: row.passwordHash } : null;
+    async findByEmail(email: string): Promise<InternalUser | null> {
+
+        const userRow = await this.findRow(email)
+
+        return userRow ? toUser(userRow) : null;
+    }
+
+    async findCredentials(email: string): Promise<{ user: InternalUser; passwordHash: string | null } | null> {
+        const userRow = await this.findRow(email);
+
+        return userRow?.status === 'active' ? { user: toUser(userRow), passwordHash: userRow.passwordHash } : null;
     }
 
     async updatePasswordHash(id: string, passwordHash: string): Promise<void> {
-        const row = this.rows.get(id);
-        if (row) {
-            row.passwordHash = passwordHash;
+
+        await this.db.update(users).set({ passwordHash }).where(eq(users.id, id));
+    }
+
+    async updateEmail(id: string, email: string): Promise<InternalUser | null> {
+        try {
+            const [updatedRow] = await this.db.update(users).set({ email: normalizeEmail(email), emailVerified: false }).where(eq(users.id, id)).returning();
+
+
+            return updatedRow ? toUser(updatedRow) : null;
+        } catch (error) {
+            if (isUniqueViolation(error, 'users_email_key')) {
+                throw new AppError(ErrorCode.EMAIL_TAKEN);
+            }
+            throw error;
         }
     }
 
-    async updateEmail(id: string, email: string): Promise<User | null> {
-        const row = this.rows.get(id);
-        if (!row) {
-            return null;
-        }
-        row.email = normalize(email);
-        row.emailVerified = false; // nobody has proven the new address yet
-        return toUser(row);
+    private async findRow(email: string): Promise<UserRow | null> {
+        const normalizedEmail = normalizeEmail(email);
+
+        const [userRow] = await this.db.select().from(users).where(eq(users.email, normalizedEmail))
+
+        return userRow ? userRow : null;
     }
 }
 
-// As the package passes addresses to handlers: an accent typed as two code points matches the stored one.
-const normalize = (email: string) => email.trim().normalize('NFC').toLowerCase();
-const toUser = ({ id, email, name, emailVerified, roles }: UserRow): User => ({ id, name, email, emailVerified, roles });
+const toUser = ({ id, email, name, emailVerified, roles }: UserRow): InternalUser => ({ id, name, email, emailVerified, roles });

@@ -3,3 +3,4 @@ export * from './events.js';
 export * from './ticketTypes.js';
 export * from './orders.js';
 export * from './tickets.js';
+export * from './sessions.js'

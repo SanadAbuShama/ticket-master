@@ -1,0 +1,359 @@
+{
+  "type": "diff",
+  "version": "9",
+  "dialect": "postgres",
+  "id": "8c2d1d71-96c9-4e71-b997-34721e0ffd90",
+  "prevIds": [
+    "55868da2-655f-4c06-856a-67201566761e"
+  ],
+  "footprints": [
+    {
+      "statementType": "create_enum",
+      "statementTarget": [
+        "enum",
+        "public",
+        "user_role"
+      ],
+      "writes": [
+        "s|enum|public.user_role",
+        "n|enum|public.user_role",
+        "e|enum|public.user_role",
+        "n|type|public.user_role"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "drop_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "users_roles"
+      ],
+      "writes": [
+        "s|fk|public.users_roles.users_roles_role_id_roles_id_fkey",
+        "n|fk|public.users_roles.users_roles_role_id_roles_id_fkey",
+        "e|fk|public.users_roles.users_roles_role_id_roles_id_fkey",
+        "n|con|public.users_roles.users_roles_role_id_roles_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.users_roles",
+        "n|sch|public",
+        "e|col|public.users_roles.role_id"
+      ]
+    },
+    {
+      "statementType": "drop_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "roles_permissions"
+      ],
+      "writes": [
+        "s|fk|public.roles_permissions.roles_permissions_role_id_roles_id_fkey",
+        "n|fk|public.roles_permissions.roles_permissions_role_id_roles_id_fkey",
+        "e|fk|public.roles_permissions.roles_permissions_role_id_roles_id_fkey",
+        "n|con|public.roles_permissions.roles_permissions_role_id_roles_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.roles_permissions",
+        "n|sch|public",
+        "e|col|public.roles_permissions.role_id"
+      ]
+    },
+    {
+      "statementType": "drop_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "roles_permissions"
+      ],
+      "writes": [
+        "s|fk|public.roles_permissions.roles_permissions_permission_id_permissions_id_fkey",
+        "n|fk|public.roles_permissions.roles_permissions_permission_id_permissions_id_fkey",
+        "e|fk|public.roles_permissions.roles_permissions_permission_id_permissions_id_fkey",
+        "n|con|public.roles_permissions.roles_permissions_permission_id_permissions_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.roles_permissions",
+        "n|sch|public",
+        "e|col|public.roles_permissions.permission_id"
+      ]
+    },
+    {
+      "statementType": "drop_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "roles"
+      ],
+      "writes": [
+        "s|tbl|public.roles",
+        "n|tbl|public.roles",
+        "e|tbl|public.roles",
+        "n|rel|public.roles",
+        "n|type|public.roles"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "drop_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "users_roles"
+      ],
+      "writes": [
+        "s|tbl|public.users_roles",
+        "n|tbl|public.users_roles",
+        "e|tbl|public.users_roles",
+        "n|rel|public.users_roles",
+        "n|type|public.users_roles"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "drop_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "permissions"
+      ],
+      "writes": [
+        "s|tbl|public.permissions",
+        "n|tbl|public.permissions",
+        "e|tbl|public.permissions",
+        "n|rel|public.permissions",
+        "n|type|public.permissions"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "drop_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "roles_permissions"
+      ],
+      "writes": [
+        "s|tbl|public.roles_permissions",
+        "n|tbl|public.roles_permissions",
+        "e|tbl|public.roles_permissions",
+        "n|rel|public.roles_permissions",
+        "n|type|public.roles_permissions"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "add_column",
+      "statementTarget": [
+        "column",
+        "public",
+        "users",
+        "roles"
+      ],
+      "writes": [
+        "s|col|public.users.roles",
+        "n|col|public.users.roles",
+        "e|col|public.users.roles"
+      ],
+      "reads": [
+        "n|tbl|public.users",
+        "n|sch|public",
+        "n|enum|public.user_role"
+      ]
+    },
+    {
+      "statementType": "add_check",
+      "statementTarget": [
+        "table",
+        "public",
+        "users"
+      ],
+      "writes": [
+        "s|ck|public.users.chk_users_roles_not_empty",
+        "n|ck|public.users.chk_users_roles_not_empty",
+        "e|ck|public.users.chk_users_roles_not_empty",
+        "n|con|public.users.chk_users_roles_not_empty"
+      ],
+      "reads": [
+        "n|tbl|public.users",
+        "n|sch|public",
+        "n|col|public.users.roles"
+      ]
+    }
+  ],
+  "deltas": [
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "name": "user_role",
+        "values": [
+          "attendee",
+          "admin",
+          "organizer"
+        ],
+        "entityType": "enums"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "users",
+        "name": "roles",
+        "type": "user_role",
+        "typeSchema": "public",
+        "notNull": true,
+        "dimensions": 1,
+        "default": "'{attendee}'",
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "users",
+        "name": "chk_users_roles_not_empty",
+        "value": "cardinality(\"roles\") >= 1",
+        "entityType": "checks"
+      }
+    },
+    {
+      "op": "drop",
+      "key": "tables\u0000[\"public\",\"roles\"]"
+    },
+    {
+      "op": "drop",
+      "key": "tables\u0000[\"public\",\"users_roles\"]"
+    },
+    {
+      "op": "drop",
+      "key": "tables\u0000[\"public\",\"permissions\"]"
+    },
+    {
+      "op": "drop",
+      "key": "tables\u0000[\"public\",\"roles_permissions\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"roles\",\"id\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"roles\",\"title\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"roles\",\"description\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"roles\",\"created_at\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"roles\",\"updated_at\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"users_roles\",\"user_id\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"users_roles\",\"role_id\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"users_roles\",\"created_at\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"permissions\",\"id\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"permissions\",\"action\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"permissions\",\"created_at\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"permissions\",\"updated_at\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"roles_permissions\",\"role_id\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"roles_permissions\",\"permission_id\"]"
+    },
+    {
+      "op": "drop",
+      "key": "columns\u0000[\"public\",\"roles_permissions\",\"created_at\"]"
+    },
+    {
+      "op": "drop",
+      "key": "fks\u0000[\"public\",\"users_roles\",\"users_roles_user_id_users_id_fkey\"]"
+    },
+    {
+      "op": "drop",
+      "key": "fks\u0000[\"public\",\"users_roles\",\"users_roles_role_id_roles_id_fkey\"]"
+    },
+    {
+      "op": "drop",
+      "key": "fks\u0000[\"public\",\"roles_permissions\",\"roles_permissions_role_id_roles_id_fkey\"]"
+    },
+    {
+      "op": "drop",
+      "key": "fks\u0000[\"public\",\"roles_permissions\",\"roles_permissions_permission_id_permissions_id_fkey\"]"
+    },
+    {
+      "op": "drop",
+      "key": "pks\u0000[\"public\",\"users_roles\",\"users_roles_pkey\"]"
+    },
+    {
+      "op": "drop",
+      "key": "pks\u0000[\"public\",\"roles_permissions\",\"roles_permissions_pkey\"]"
+    },
+    {
+      "op": "drop",
+      "key": "pks\u0000[\"public\",\"roles\",\"roles_pkey\"]"
+    },
+    {
+      "op": "drop",
+      "key": "pks\u0000[\"public\",\"permissions\",\"permissions_pkey\"]"
+    },
+    {
+      "op": "drop",
+      "key": "uniques\u0000[\"public\",\"roles\",\"roles_title_key\"]"
+    },
+    {
+      "op": "drop",
+      "key": "uniques\u0000[\"public\",\"permissions\",\"permissions_action_key\"]"
+    },
+    {
+      "op": "alter",
+      "key": "uniques\u0000[\"public\",\"users\",\"users_email_key\"]",
+      "set": {
+        "nameExplicit": true
+      }
+    }
+  ]
+}

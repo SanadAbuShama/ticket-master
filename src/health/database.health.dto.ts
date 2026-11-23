@@ -1,7 +1,5 @@
 import { z } from 'zod';
 
-
-
 export const healthResponse = z.object({
   status: 'ok',
   database: 'ok',
