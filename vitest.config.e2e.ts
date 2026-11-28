@@ -1,10 +1,10 @@
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  resolve: { tsconfigPaths: true },
+  // copy the `plugins` from your existing vitest.config.ts here (the SWC plugin Nest needs)
   test: {
-    globals: true,
-    root: './',
-    include: ['**/*.e2e-spec.ts'],
+    include: ['test/**/*.e2e.spec.ts'],
+    globalSetup: ['test/global.setup.ts'],
+    fileParallelism: false,
   },
 });

@@ -1,8 +1,9 @@
 
 import { Injectable } from '@nestjs/common';
 import { PasswordHasher } from '@nestjs/authentication';
-import type { InternalUser } from '../users/user.types.js';
+import type { InternalUser, Role } from '../users/user.types.js';
 import { UsersRepository } from '../users/users.repository.js';
+import { userRole } from '../database/schema/users.js';
 
 @Injectable()
 export class CredentialsService {
@@ -11,9 +12,9 @@ export class CredentialsService {
         private readonly passwordHasher: PasswordHasher,
     ) { }
 
-    async register(name: string, email: string, password: string,): Promise<InternalUser> {
+    async register(name: string, email: string, password: string, roles: Role[]): Promise<InternalUser> {
 
-        return this.usersRepository.create(email, { name, passwordHash: await this.passwordHasher.hash(password) });
+        return this.usersRepository.create(email, { name, roles,  passwordHash: await this.passwordHasher.hash(password) });
     }
 
     async verify(email: string, password: string): Promise<InternalUser | null> {
