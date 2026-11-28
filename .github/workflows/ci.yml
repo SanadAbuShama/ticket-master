@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    # A fresh, throwaway Postgres for every run.
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: admin
+          POSTGRES_DB: ticket_master_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U admin -d ticket_master_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    # What .env.test provides locally. The app's Zod schema validates these.
+    env:
+      NODE_ENV: test
+      PORT: 3000
+      DATABASE_URL: postgresql://admin:admin@localhost:5432/ticket_master_test
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v5
+
+      - name: Install pnpm (version from package.json "packageManager")
+        uses: pnpm/action-setup@v4
+
+      - name: Install Node (version from .node-version)
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Build
+        run: pnpm build
+
+      - name: Unit tests
+        run: pnpm test
+
+      - name: Integration tests
+        run: pnpm test:e2e

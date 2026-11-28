@@ -1,9 +1,12 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { migrate } from 'drizzle-orm/node-postgres/migrator';
 import { Pool } from 'pg';
+import { existsSync } from 'node:fs';
 
 export default async function setup() {
-  process.loadEnvFile('.env.test');
+  if (existsSync('.env.test')) {
+    process.loadEnvFile('.env.test');
+  }
 
   const url = process.env.DATABASE_URL ?? '';
   if (!url.endsWith('_test')) {
@@ -14,3 +17,5 @@ export default async function setup() {
   await migrate(drizzle({ client: pool }), { migrationsFolder: './drizzle' });
   await pool.end();
 }
+
+
