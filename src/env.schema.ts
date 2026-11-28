@@ -5,7 +5,7 @@ export const EnvironmentVariablesSchema = z.object({
     POSTGRES_PASSWORD: z.string(),
     POSTGRES_DB: z.string(),
     DATABASE_URL: z.url(),
-    NODE_ENV: z.enum(['development', 'staging', 'production']),
+    NODE_ENV: z.enum(['development', 'staging', 'production', 'test']),
     PORT: z.coerce.number()
 })
 

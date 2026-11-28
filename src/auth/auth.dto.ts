@@ -2,11 +2,13 @@ import { z, ZodType } from 'zod';
 import { emailSchema } from '../common/schemas/email.schema.js';
 import { passwordSchema } from '../common/schemas/password.schema.js';
 import { userRole } from '../database/schema/index.js';
+import { ROLES } from '../users/user.types.js';
 
 export const signUpSchema = z.object({
   name: z.string().trim().min(1).max(100),
   email: emailSchema,
   password: passwordSchema,
+  role: z.enum(ROLES).extract(['attendee', 'organizer']).optional(),
 });
 
 export type SignUpDto = z.infer<typeof signUpSchema>;

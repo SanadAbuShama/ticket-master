@@ -1,12 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module.js';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { appOptions, configureApp } from './app.setup.js';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {
-    routeConflictPolicy: { duplicate: 'error', shadow: 'warn' },
-    routeResolutionStrategy: 'specificity',
-  });
+  const app = await NestFactory.create(AppModule, appOptions);
+  configureApp(app);
 
   const config = new DocumentBuilder()
     .setTitle('TicketMaster API')
@@ -18,9 +18,9 @@ async function bootstrap() {
 
   SwaggerModule.setup('docs', app, documentFactory);
 
-  app.enableShutdownHooks()
+  const appConfig = app.get(ConfigService);
 
-  await app.setGlobalPrefix('api/v1').listen(process.env.PORT ?? 3000);
+  await app.listen(appConfig.getOrThrow('PORT'));
 }
 
 await bootstrap();

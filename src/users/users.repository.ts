@@ -1,6 +1,6 @@
 
 import { Injectable } from '@nestjs/common';
-import type { InternalUser, UserRow } from './user.types.js';
+import type { InternalUser, Role, UserRow } from './user.types.js';
 import { InjectDrizzle } from '@nestjs/drizzle';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { users } from '../database/schema/users.js';
@@ -16,12 +16,12 @@ export class UsersRepository {
 
     async create(
         email: string,
-        { passwordHash, emailVerified = false, name }: { name: string; passwordHash: string; emailVerified?: boolean },
+        { passwordHash, emailVerified = false, name, roles }: { name: string; passwordHash: string; roles: Role[]; emailVerified?: boolean },
     ): Promise<InternalUser> {
         try {
             const [createdUserRow] = await this.db
                 .insert(users)
-                .values({ name, email: normalizeEmail(email), emailVerified, passwordHash })
+                .values({ name, email: normalizeEmail(email), emailVerified, passwordHash, roles })
                 .returning();
 
             if (!createdUserRow) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { SignInDto, SignUpDto } from './auth.dto.js';
 import { CredentialsService } from './credentials.service.js';
-import { InternalUser } from '../users/user.types.js';
+import { InternalUser, Role } from '../users/user.types.js';
 import { SignInService } from '@nestjs/authentication';
 import { AppError } from '../common/errors/app.error.js';
 import { ErrorCode } from '../common/errors/error.codes.js';
@@ -13,9 +13,11 @@ export class AuthService {
     private readonly signInService: SignInService
   ) { }
 
-  async signUp({ email, name, password }: SignUpDto): Promise<InternalUser> {
+  async signUp({ email, name, password, role }: SignUpDto): Promise<InternalUser> {
 
-    const createdUser = await this.credentialsService.register(name, email, password)
+    const roles: Role[] = role === 'organizer' ? ['attendee', 'organizer'] : ['attendee'];
+
+    const createdUser = await this.credentialsService.register(name, email, password, roles)
     await this.signInService.signIn(createdUser.id, { method: 'password' });
 
     return createdUser

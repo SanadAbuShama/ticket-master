@@ -1,9 +1,10 @@
 import { sql } from "drizzle-orm";
 import { boolean, check, pgEnum, snakeCase, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
+import { ROLES } from "../../users/user.types.js";
 
 export const userStatus = pgEnum('user_status', ['active', 'deactivated', 'suspended']);
 
-export const userRole = pgEnum('user_role', ['attendee', 'admin', 'organizer']);
+export const userRole = pgEnum('user_role', ROLES);
 
 export const users = snakeCase.table('users', {
 	id: uuid().primaryKey().defaultRandom(),
